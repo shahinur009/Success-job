@@ -3,8 +3,8 @@ import logo from '../assets/image/logo.png'
 const Footer = () => {
     return (
         <>
-            <footer className="bg-base-100 text-white container px-8 py-8 mx-auto">
-                <div className="container p-6 mx-auto">
+            <footer className="bg-base-100  text-white container px-8 py-8 mx-auto">
+                <div className="container rounded-md shadow-md mt-4 px-6 mx-auto">
                     <div className="lg:flex">
                         <div className="w-full -mx-6 lg:w-2/5">
                             <div className="px-6">
@@ -38,8 +38,8 @@ const Footer = () => {
                         <div className="mt-6 lg:mt-0 lg:flex-1">
                             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                                 <div>
-                                    <h3 className="text-gray-700 uppercase dark:text-white">About</h3>
-                                    <Link to='/'>Success Jobs</Link>
+                                    <h3 className="text-gray-700 uppercase dark:text-black">About</h3>
+                                    <Link to='/' className='text-black'>Success Jobs</Link>
                                 </div>
 
                                 <div>

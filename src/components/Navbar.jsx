@@ -64,7 +64,7 @@ const Navbar = () => {
                                     </>)
                             }
 
-
+                            {/* dark and light theme use here */}
                             <label className="swap swap-rotate">
                                 <input type="checkbox" onChange={handleToggle}
                                     checked={theme === 'light' ? false : true} />
@@ -79,9 +79,12 @@ const Navbar = () => {
                     </div>
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+
+                            <div title={user?.displayName} className="w-10 rounded-full">
+                                <img alt="Tailwind CSS Navbar component" referrerPolicy='no-referrer'
+                                    src={user?.photoURL} />
                             </div>
+
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[1] md:hidden p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                             <li>

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from '../assets/image/logo.png'
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
@@ -6,20 +6,22 @@ import toast from "react-hot-toast";
 
 const Login = () => {
     const navigate = useNavigate()
-    const [password, setPassword] = useState('')
+    const location = useLocation()
     let [showPassword, setShowPassword] = useState(false)
-    const { signIn, logInGoogle } = useContext(AuthContext)
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
 
+    // google sign in
     const handleGoogleSignIn = async () => {
         try {
-            await logInGoogle()
+            await signInWithGoogle()
             toast.success('sign in successfully')
-            navigate('/')
+            navigate(location?.state ? location.state : '/')
         } catch (error) {
             console.log(error)
             toast.error(error?.message)
         }
     }
+    //email password sign in 
     const handleSignIn = async (e) => {
         e.preventDefault()
         const form = e.target;
@@ -29,7 +31,7 @@ const Login = () => {
         try {
             const result = await signIn(email, password)
             console.log(result);
-            navigate('/')
+            navigate(location?.state ? location.state : '/')
             toast.success('sign in successfully')
         } catch (err) {
             console.log(err)
@@ -44,69 +46,46 @@ const Login = () => {
     return (
         <>
             <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <h1 className="text-2xl font-bold text-center">Login Please</h1>
                 <div className="flex justify-center mx-auto">
                     <img className="w-auto h-32 md:h-36" src={logo} alt="" />
                 </div>
 
                 <form onSubmit={handleSignIn} className="mt-6">
                     <div>
-                        <label type="email" className="block text-sm text-gray-800 dark:text-gray-200">Email</label>
+                        <label className="block text-sm text-gray-800 dark:text-gray-200">Email</label>
                         <input type="email" name="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
+                    <div className="space-y-2">
+                        <label htmlFor="photo" className="text-sm">Password</label>
+                        <input type={showPassword ? 'text' : 'password'} name="password" placeholder="Your Password" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <label className="password cursor-pointer absolute -ml-7 pt-2"
+                            onClick={handleShowPassword}>
+                            {
+                                showPassword ?
+                                    (
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            onClick={() => setShowPassword(false)}
+                                            fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+                                        </svg>
 
-                    <div className="mt-4 relative">
-                        <div className="flex items-center justify-between">
-                            <label type="password" className="block text-sm text-gray-800 dark:text-gray-200">Password</label>
-                        </div>
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            name="password"
-                            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                        />
-                        <label
-                            className="password cursor-pointer absolute right-0 top-1/2 transform -translate-y-1/2 mt-3"
-                            onClick={handleShowPassword}
-                        >
-                            {showPassword ? (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-                            ) : (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                    />
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M17 17L12 12 17 7"
-                                    />
-                                </svg>
-                            )}
+
+
+                                    ) :
+
+                                    (<svg xmlns="http://www.w3.org/2000/svg"
+                                        onClick={() => setShowPassword(true)}
+
+                                        fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                    )
+                            }
+
                         </label>
                     </div>
-
-
                     <div className="mt-6">
                         <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
                             Sign In
