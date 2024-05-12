@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 
 const JobDetails = () => {
     const job = useLoaderData();
+    const navigate = useNavigate();
+    const location = useLocation();
     const { user } = useContext(AuthContext)
 
 
@@ -29,6 +31,9 @@ const JobDetails = () => {
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/apply`, applyData)
             console.log(data)
+            
+            toast.success('please fill up the apply requirement')
+            navigate('/all-jobs')
         } catch (err) {
             console.log(err)
         }
@@ -78,7 +83,7 @@ const JobDetails = () => {
                             <div className="modal-action w-1/2">
                                 <div method="dialog">
                                     {/* if there is a button, it will close the modal */}
-                                    <button onClick={() => document.getElementById('my_modal_4').showModal(false)} className="btn btn-success">Apply Now</button>
+                                    <Link to='/all-jobs' onClick={() => document.getElementById('my_modal_4').showModal(false)} className="btn btn-success" toast>Apply Now</Link>
                                 </div>
                             </div>
                         </form>
