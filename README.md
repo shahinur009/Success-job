@@ -8,3 +8,9 @@ Live site link =>
 
 Use NPM package
 1. npm install react-icons --save
+2. npm datepicker
+3. npm firebase
+4. npm useHooks
+5. npm dotenv
+6. npm express js
+7. mongodb 

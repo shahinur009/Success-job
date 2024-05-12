@@ -7,6 +7,10 @@ import Registration from "../components/Registration";
 import JobDetails from "../pages/JobDetails";
 import AddJob from "../pages/AddJob";
 import MyJobs from "../pages/MyJobs";
+import Updated from "../pages/Updated";
+import PrivateRoutes from "./PrivateRoutes";
+import AppliedJobs from "../pages/AppliedJobs";
+import Blogs from "../pages/Blogs";
 
 
 
@@ -32,17 +36,40 @@ const router = createBrowserRouter([
                 element: <Registration />
             },
             {
+                path: '/blogs',
+                element: <Blogs />
+            },
+            {
                 path: '/job/:id',
-                element: <JobDetails />,
+                element: <PrivateRoutes>
+                    <JobDetails />
+                </PrivateRoutes>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
+            },
+            {
+                path: '/update/:id',
+                element: <PrivateRoutes>
+                    <Updated />
+                </PrivateRoutes>,
                 loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
             },
             {
                 path: '/add-job',
-                element: <AddJob />
+                element: <PrivateRoutes>
+                    <AddJob />
+                </PrivateRoutes>
             },
             {
                 path: '/my-jobs',
-                element: <MyJobs />
+                element: <PrivateRoutes>
+                    <MyJobs />
+                </PrivateRoutes>
+            },
+            {
+                path: '/applied-jobs',
+                element: <PrivateRoutes>
+                    <AppliedJobs />
+                </PrivateRoutes>
             }
 
 

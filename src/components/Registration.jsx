@@ -1,14 +1,21 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from '../assets/image/logo.png'
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Registration = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const from = location.state || '/';
     let [showPassword, setShowPassword] = useState(false)
-    const { createUser, signInWithGoogle, updateUserProfile, user, setUser } = useContext(AuthContext);
+    const { createUser, signInWithGoogle, updateUserProfile, user, setUser, loading, } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+    }, [navigate, user])
 
     const handleRegister = async e => {
         e.preventDefault();
@@ -24,7 +31,7 @@ const Registration = () => {
             console.log(result);
             await updateUserProfile(name, photo)
             setUser({ ...user, photoURL: photo, displayName: name })
-            navigate(location?.state ? location.state : '/')
+            navigate(from, { replace: true })
             toast.success('Sign Up Successfully')
         } catch (err) {
             console.log(err)
@@ -44,6 +51,7 @@ const Registration = () => {
     const handleShowPassword = () => {
         setShowPassword(!showPassword)
     }
+    if (user || loading) return;
 
     return (
         <>
