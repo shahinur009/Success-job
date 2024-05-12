@@ -4,13 +4,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext)
     const navigate = useNavigate();
-    const location = useLocation();
+
 
     const handleApplication = async e => {
         e.preventDefault();

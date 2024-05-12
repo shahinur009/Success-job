@@ -11,11 +11,11 @@ const JobDetails = () => {
     const { user } = useContext(AuthContext)
 
 
-    const { _id, job_title, category, buyer_name, job_description, image, salary_range, buyer_email } = job || {};
+    const { _id, job_title, category, buyer_name, job_description, image, salary_range, buyer, applicants_number } = job || {};
 
     const handleApplication = async e => {
         e.preventDefault();
-        if (user?.email === buyer_email) return toast.error('You are not permitted try another way!!')
+        if (user?.email === buyer?.email) return toast.error('You are not permitted try another way!!')
         const form = e.target;
         const jobId = _id
         const resume = form.resume.value;
@@ -23,7 +23,7 @@ const JobDetails = () => {
         const email = user?.email;
 
         const applyData = {
-            jobId, resume, category, name, buyer_email, email, buyer_name, image, job_description,
+            jobId, resume, category, name, buyer, email, buyer_name, image, job_description, applicants_number, buyer_email: buyer?.email,
         }
         console.table(applyData)
         try {
@@ -55,15 +55,15 @@ const JobDetails = () => {
                             </h3>
                             <p className="text-white md:px-16">{job_description}</p>
                             <p className=" text-black mt-2">Salary: {salary_range} </p>
-                            <p>Applicants number: </p>
+                            <p>Applicants number:{applicants_number} </p>
                         </header>
                     </div>
                     {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                    <button className="btn btn-warning w-full" onClick={() => document.getElementById('my_modal_4').showModal()}>Apply Now</button>
+                    <button className="btn btn-warning w-full" onClick={() => document.getElementById('my_modal_4').showModal(true)}>Apply Now</button>
                     <dialog id="my_modal_4" className="modal">
                         <form onSubmit={handleApplication} className="modal-box">
-                            <h3 className="font-bold text-lg text-black" defaultValue={user?.name}>Buyer Name: {user?.displayName}</h3>
-                            <p className="py-4 font-bold text-black">Buyer Email: {user?.email}</p>
+                            <h3 className="font-bold text-lg text-black" defaultValue={user?.name}>Buyer Name: {buyer?.name}</h3>
+                            <p className="py-4 font-bold text-black">Buyer Email: {buyer?.email}</p>
                             <div className="flex font-bold">
                                 <label className='text-gray-700 px-4 py-2 mt-2' htmlFor='resume'>
                                     Resume link
@@ -78,7 +78,7 @@ const JobDetails = () => {
                             <div className="modal-action w-1/2">
                                 <div method="dialog">
                                     {/* if there is a button, it will close the modal */}
-                                    <button className="btn btn-success">Apply Now</button>
+                                    <button onClick={() => document.getElementById('my_modal_4').showModal(false)} className="btn btn-success">Apply Now</button>
                                 </div>
                             </div>
                         </form>
