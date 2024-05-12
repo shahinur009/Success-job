@@ -27,8 +27,8 @@ const JobsCategory = () => {
                         <TabList className='bg-fuchsia-600 '>
                             <Tab>On-Site Job</Tab>
                             <Tab>Remote Job</Tab>
-                            <Tab>Hybrid Job</Tab>
-                            <Tab>Part-Time Job</Tab>
+                            <Tab>Hybrid</Tab>
+                            <Tab>Part-Time</Tab>
                         </TabList>
                     </div>
                     <TabPanel>

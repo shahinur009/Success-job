@@ -1,16 +1,21 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
+import toast from "react-hot-toast";
+
 
 
 const JobDetails = () => {
     const job = useLoaderData();
     const { user } = useContext(AuthContext)
 
+
     const { _id, job_title, category, buyer_name, job_description, image, salary_range, buyer_email } = job || {};
 
     const handleApplication = async e => {
         e.preventDefault();
+        if (user?.email === buyer_email) return toast.error('You are not permitted try another way!!')
         const form = e.target;
         const jobId = _id
         const resume = form.resume.value;
@@ -21,6 +26,12 @@ const JobDetails = () => {
             jobId, resume, category, name, buyer_email, email, buyer_name, image, job_description,
         }
         console.table(applyData)
+        try {
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/apply`, applyData)
+            console.log(data)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (
