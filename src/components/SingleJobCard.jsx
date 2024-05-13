@@ -6,7 +6,7 @@ const SingleJobCard = ({ job }) => {
     const { category, _id, job_title,
         applicants_number, name, posting_date, salary_range, deadline
     } = job || {};
-    console.log(job)
+    // console.log(job)
     return (
         <>
             <div title="Want to see detail first login" className="container md:mx-auto px-6 py-6 w-full md:w-[420px]  border-2 rounded-md">

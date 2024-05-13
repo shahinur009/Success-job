@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 const JobDetails = () => {
     const job = useLoaderData();
     const navigate = useNavigate();
-    const location = useLocation();
+    // const location = useLocation();
     const { user } = useContext(AuthContext)
 
 

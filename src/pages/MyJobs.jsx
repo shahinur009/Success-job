@@ -17,13 +17,13 @@ const MyJobs = () => {
     }, [user])
 
     const getData = async () => {
-        const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs/${user?.email}`)
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs/${user?.email}`, { withCredentials: true })
         setJobs(data)
     }
 
     const handleDelete = async (id) => {
         try {
-            const { data } = await axios.delete(`http://localhost:5000/job/${id}`)
+            const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/job/${id}`)
             console.log(data);
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
@@ -48,7 +48,7 @@ const MyJobs = () => {
                         icon: "success"
                     });
                 } else if (
-                     result.dismiss === Swal.DismissReason.cancel
+                    result.dismiss === Swal.DismissReason.cancel
                 ) {
                     swalWithBootstrapButtons.fire({
                         title: "Cancelled",
