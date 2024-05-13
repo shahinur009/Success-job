@@ -1,15 +1,17 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+import { useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
-import axios from "axios";
 import toast from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+
 
 
 const Updated = () => {
-    const job = useLoaderData()
+    const job = useLoaderData();
     const [startDate, setStartDate] = useState(new Date());
-    const { user } = useContext(AuthContext)
+    const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -48,7 +50,7 @@ const Updated = () => {
             },
         }
         try {
-            const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/job/${id}`, jobData)
+            const { data } = await axiosSecure.put(`/job/${id}`, jobData)
             console.log(data)
             toast.success('Information updated successfully')
             navigate('/my-jobs')

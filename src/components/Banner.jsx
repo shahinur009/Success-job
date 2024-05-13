@@ -15,7 +15,7 @@ import Slider from './Slider';
 
 const Banner = () => {
     return (
-        <div className='md:container px-2 py-2 md:px-6 md:py-6 md:mx-auto'>
+        <div className='md:container px-2 py-2 md:px-8 md:py-8 md:mx-auto'>
             <Swiper
                 cssMode={true}
                 navigation={true}
