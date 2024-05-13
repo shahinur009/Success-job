@@ -1,9 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const AppliedJobs = () => {
     const { user } = useContext(AuthContext);
+    useQuery({
+        
+    })
+
     const [applied, setApplied] = useState([]);
 
     useEffect(() => {

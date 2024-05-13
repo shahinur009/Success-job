@@ -1,14 +1,14 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const AddJob = () => {
     const [startDate, setStartDate] = useState(new Date());
-    const { user } = useContext(AuthContext)
+    const { user } = useAuth()
     const navigate = useNavigate();
 
 
@@ -67,7 +67,7 @@ const AddJob = () => {
                             </div>
                             <div className="w-full">
                                 <label name="date" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posting Date</label>
-                                <input type="date" name="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  placeholder="please provide date"/>
+                                <input type="date" name="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="please provide date" />
                             </div>
                             <div className="w-full">
                                 <label name="deadline" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Application Deadline  </label>

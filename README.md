@@ -17,4 +17,5 @@ Use NPM package
 
 use: custom hooks
 1. useAuth
-2. useNavigate
+2. useAxiosSecure
+
