@@ -21,7 +21,7 @@ const Updated = () => {
         e.preventDefault()
         const form = e.target;
         const job_title = form.title.value;
-        const name = form.name.value;
+        const name = form.displayName.value;
         const email = form.email.value;
         const posting_date = form.date.value;
         const deadline = form.deadline.value;
@@ -50,7 +50,7 @@ const Updated = () => {
             },
         }
         try {
-            const { data } = await axiosSecure.put(`/job/${id}`, jobData)
+            const { data } = await axiosSecure.put(`/job/${id}/${user?.email}`, jobData)
             console.log(data)
             toast.success('Information updated successfully')
             navigate('/my-jobs')
@@ -73,8 +73,8 @@ const Updated = () => {
                                 <input type="text" name="title" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type job title" required="" defaultValue={job_title} />
                             </div>
                             <div className="w-full">
-                                <label name="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Name</label>
-                                <input type="text" name="name" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled defaultValue={user?.displayName} />
+                                <label name="displayName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Name</label>
+                                <input type="text" name="displayName" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled defaultValue={user?.displayName} />
                             </div>
                             <div className="w-full">
                                 <label name="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Email</label>

@@ -9,7 +9,7 @@ const SingleJobCard = ({ job }) => {
     // console.log(job)
     return (
         <>
-            <div title="Want to see detail first login" className="container md:mx-auto px-6 py-6 w-full md:w-[420px]  border-2 rounded-md">
+            <div title="Want to see detail first login" className="container md:mx-auto px-6 py-6 w-full md:w-96  border-2 rounded-md">
                 <div className="flex justify-between items-center">
                     <h1 className="text-xl font-bold text-gray-950">{job_title}</h1>
                     <span className="bg-yellow-200 text-yellow-800 rounded-md">{category}</span>

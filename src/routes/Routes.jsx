@@ -11,6 +11,7 @@ import Updated from "../pages/Updated";
 import PrivateRoutes from "./PrivateRoutes";
 import AppliedJobs from "../pages/AppliedJobs";
 import Blogs from "../pages/Blogs";
+import AllJobs from "../pages/AllJobs";
 // import AllJobs from "../pages/AllJobs";
 
 
@@ -40,11 +41,11 @@ const router = createBrowserRouter([
                 path: '/blogs',
                 element: <Blogs />
             },
-            // {
-            //     path: '/all-jobs',
-            //     element: <AllJobs />,
-            //     loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
-            // },
+            {
+                path: '/all-jobs',
+                element: <AllJobs />,
+                // loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
+            },
             {
                 path: '/job/:id',
                 element: <PrivateRoutes>

@@ -1,41 +1,47 @@
-import { useContext } from "react";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import { AuthContext } from "../provider/AuthProvider";
-import axios from "axios";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 
 const JobDetails = () => {
     const job = useLoaderData();
     const navigate = useNavigate();
+    const axiosSecure = useAxiosSecure()
     // const location = useLocation();
-    const { user } = useContext(AuthContext)
+    const { user } = useAuth()
 
 
     const { _id, job_title, category, buyer_name, job_description, image, salary_range, buyer, applicants_number } = job || {};
 
     const handleApplication = async e => {
         e.preventDefault();
-        if (user?.email === buyer?.email) return toast.error('You are not permitted try another way!!')
+        console.log('hi')
+        console.log(user?.email ,buyer?.email)
+        if (user?.email === buyer?.email) { 
+            return toast.error('You are not permitted try another way!!') 
+        }
         const form = e.target;
         const jobId = _id
         const resume = form.resume.value;
         const name = user?.displayName;
         const email = user?.email;
 
+
         const applyData = {
-            jobId, resume, category, name, buyer, email, buyer_name, image, job_description, applicants_number, buyer_email: buyer?.email,
+            jobId, resume, category, name, buyer, email, buyer_name, image, job_description, applicants_number,
+            buyer_email: buyer?.email,
         }
         console.table(applyData)
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/apply`, applyData)
+            const { data } = await axiosSecure.post(`/apply`, applyData)
             console.log(data)
-            
+
             toast.success('please fill up the apply requirement')
-            navigate('/all-jobs')
+            navigate('/applied-jobs')
         } catch (err) {
-            console.log(err)
+            toast.error(err.response.data)
         }
     }
 
@@ -83,7 +89,7 @@ const JobDetails = () => {
                             <div className="modal-action w-1/2">
                                 <div method="dialog">
                                     {/* if there is a button, it will close the modal */}
-                                    <Link to='/all-jobs' onClick={() => document.getElementById('my_modal_4').showModal(false)} className="btn btn-success" toast>Apply Now</Link>
+                                    <button type="submit" onClick={() => document.getElementById('my_modal_4').showModal(false)} className="btn btn-success">Submit</button>
                                 </div>
                             </div>
                         </form>

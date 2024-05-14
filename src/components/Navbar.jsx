@@ -30,7 +30,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="navbar bg-base-100 container mx-auto py-8 px-8">
+            <div className="navbar bg-base-100 container mx-auto py-8 px-8 sticky top-0 left-0 right-0 z-50">
                 <Link to='/' className="flex-1">
                     <img className="h-10 w-10 md:h-16 md:w-16 md:absolute" src={logo} alt="logo" />
                     <a className="btn btn-ghost md:relative md:ml-16 text-sm font-bold md:text-2xl md:font-bold">SUCCESS JOBS</a>
