@@ -21,10 +21,10 @@ const JobsCategory = () => {
         <>
             <Tabs>
                 <div className='container px-6 py-6 mx-auto'>
-                    <h1 className='text-3xl font-bold text-center my-5'>Find Your Dream Jobs Here</h1>
+                    <h1 className='text-xl md:text-3xl font-bold text-center my-5'>Find Your Dream Jobs Here</h1>
                     <p className='text-center pb-3'>world largest job searching and job posting site. </p>
                     <div className='flex items-center justify-center font-bold '>
-                        <TabList className='bg-fuchsia-600 '>
+                        <TabList className='bg-fuchsia-600 text-[8px] md:text-xl '>
                             <Tab>On-Site Job</Tab>
                             <Tab>Remote Job</Tab>
                             <Tab>Hybrid</Tab>
@@ -32,7 +32,7 @@ const JobsCategory = () => {
                         </TabList>
                     </div>
                     <TabPanel>
-                        <div className='grid grid-cols-1 gap-6 mt-6 xl:mt-14 md:grid-cols-2 '>
+                        <div className='grid grid-cols-1 gap-2 md:gap-6 mt-2 md:mt-6 xl:mt-14 md:grid-cols-2 '>
                             {jobs.filter(j => j.category === 'On-Site Job')
                                 .map(job =>
                                     <SingleJobCard key={job._id} job={job}

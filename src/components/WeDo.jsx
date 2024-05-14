@@ -6,7 +6,7 @@ import { TbBrandSuperhuman } from "react-icons/tb";
 const WeDo = () => {
     return (
         <>
-            <h1 className="text-4xl text-center py-5 font-bold">How <span className="text-red-700">Success Jobs</span> Works for You?</h1>
+            <h1 className="text-xl md:text-4xl text-center py-5 font-bold">How <span className="text-red-700">Success Jobs</span> Works for You?</h1>
             <div className="grid grid-cols-1 md:grid-cols-3">
 
                 <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">

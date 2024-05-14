@@ -3,8 +3,8 @@ const OurJobProcess = () => {
     return (
         <>
             <section className=" bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% ...">
-                <div className="container px-6 py-12 mx-auto">
-                    <h1 className="text-2xl text-center mb-5 md:text-4xl font-bold">Our Job <span className="text-red-700">Process</span> </h1>
+                <div className="container px-2 py-2 md:px-6 md:py-12 mx-auto">
+                    <h1 className="text-2xl text-center mb-2 md:mb-5 md:text-4xl font-bold">Our Job <span className="text-red-700">Process</span> </h1>
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                         <div className="border-x-2 rounded-md p-5">
                             <svg className="w-8 h-10" viewBox="0 0 30 30" fill="none">
@@ -23,7 +23,7 @@ const OurJobProcess = () => {
 
                             <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Search Job</h1>
 
-                            <p className="mt-2 text-white dark:text-gray-400">Job search allows individuals to explore new career opportunities that align with their skills, interests, and career goals. It opens up possibilities for career advancement, higher salaries, and personal growth.</p>
+                            <p className="mt-2 text-white dark:text-gray-400 text-[16px]">Job search allows individuals to explore new career opportunities that align with their skills, interests, and career goals. It opens up possibilities for career advancement, higher salaries, and personal growth.</p>
                         </div>
 
                         <div className="border-x-2 p-5 rounded-md">

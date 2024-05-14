@@ -81,7 +81,7 @@ const JobDetails = () => {
                                 </label>
                                 <input
                                     id='price'
-                                    type='text'
+                                    type='url'
                                     name='resume'
                                     className='block w-full mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                 />

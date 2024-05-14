@@ -15,6 +15,7 @@ Use NPM package
 6. npm express js
 7. mongodb 
 8. dev tools
+9. framer-motion
 
 use: custom hooks
 1. useAuth

@@ -4,7 +4,7 @@ const Blogs = () => {
         <>
             <section className="dark:bg-gray-100 dark:text-gray-800 ">
                 <div className="container flex flex-col justify-center p-4 mx-auto md:p-8">
-                    <h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl"> <span className="text-amber-800">Blog:</span> Questions and Answers </h2>
+                    <h2 className="mb-12 md:text-4xl font-bold leading-none text-center text-2xl"> <span className="text-amber-800">Blog:</span> Questions and Answers </h2>
                     <div className="grid gap-10 md:gap-8 sm:p-3 md:grid-cols-2 lg:px-12 xl:px-32">
                         <div>
                             <h3 className="font-semibold">What is an access token and refresh token? How do they work and where should

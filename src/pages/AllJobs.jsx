@@ -11,7 +11,7 @@ const AllJobs = () => {
 
 
     const getData = async () => {
-        const { data } = await axios(`${import.meta.env.VITE_API_URL}/all-jobs?page=${currentPage}&size=${itemPerPage}${search.length > 0 ? '&search='+search : ''
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/all-jobs?page=${currentPage}&size=${itemPerPage}${search.length > 0 ? '&search=' + search : ''
             }`)
         setJobs(data)
     }
@@ -40,12 +40,12 @@ const AllJobs = () => {
         <>
             <div className="overflow-x-auto">
                 <div className="w-full mx-auto justify-center items-center text-center mb-2 md:mb-6">
-                    <span className="text-xl font-bold btn btn-secondary"
+                    <span className="text-[14px] md:text-xl font-bold btn btn-secondary"
                         onClick={() => getData()}
                     >Search </span>
 
 
-                    <input type="search" onChange={(e) => setSearch(e.target.value)} className="p-3 border-2 rounded-md w-1/3" placeholder="Search your jobs" />
+                    <input type="search" onChange={(e) => setSearch(e.target.value)} className="p-3 border-2 rounded-md w-1/2 md:w-1/3" placeholder="Search your jobs" />
                 </div>
                 <div>
                     <div className="flex flex-wrap justify-center gap-5">

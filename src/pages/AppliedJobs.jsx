@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import { FaCloudDownloadAlt } from "react-icons/fa";
-import { useState } from "react";
+
 
 
 const AppliedJobs = () => {
@@ -23,11 +23,16 @@ const AppliedJobs = () => {
         return data
     }
     const mutation = useMutation({
-        mutationFn:getData,
-        onSuccess:(data)=>{
+        mutationFn: getData,
+        onSuccess: (data) => {
             queryClient.setQueryData(['applied-jobs', user?.email], data);
         }
     });
+
+    const handleDownload = (resume) => {
+        // Assuming resume is a URL to the PDF file
+        window.open(resume, '_blank');
+    };
 
     if (isLoading) return <p>please wait data loading....</p>
     if (isError || error) {
@@ -36,7 +41,7 @@ const AppliedJobs = () => {
     return (
         <>
             <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-                <h2 className="mb-4 text-xl font-bold">Applied jobs: <span className="text-green-500">{applied.length}</span> </h2>
+                <h2 className="mb-4 text-[12px] md:text-xl font-bold">Applied jobs: <span className="text-green-500">{applied.length}</span> </h2>
 
                 <div className="overflow-x-auto">
                     <table className="min-w-full text-xs">
@@ -85,7 +90,7 @@ const AppliedJobs = () => {
                                             <p className="dark:text-gray-600">{apply.category}</p>
                                         </td>
                                         <td className="p-3">
-                                            <p className="dark:text-gray-600 text-xl"><FaCloudDownloadAlt /></p>
+                                            <button className="focus:outline-none" onClick={() => handleDownload(apply.resume)}><FaCloudDownloadAlt className="text-xl text-blue-600" /></button>
                                         </td>
                                     </tr>
                                 ))
