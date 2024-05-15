@@ -6,6 +6,7 @@ Server site Github link => https://github.com/Porgramming-Hero-web-course/b9a11-
 
 Firebase Live site link => https://success-jobs-7e686.web.app/
 
+
 vercel deploy link => https://success-jobs-server.vercel.app/
 
 Pages:
@@ -16,7 +17,7 @@ Pages:
 5. Add jobs
 6. My Jobs
 7. Applied Jobs
-8. Error page
+8. Error page 
 
 Use NPM package
 1. npm install react-icons --save
@@ -32,4 +33,8 @@ Use NPM package
 use: custom hooks
 1. useAuth
 2. useAxiosSecure
+
+Framer Motion use:
+1. Home page-> Explore Yourself section
+2. login page
 

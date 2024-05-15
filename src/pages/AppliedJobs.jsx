@@ -34,7 +34,7 @@ const AppliedJobs = () => {
 
     if (isLoading) return <p>please wait data loading....</p>
     if (isError || error) {
-        // console.log(isError, error)
+        console.log(isError, error)
     }
     return (
         <>
