@@ -6,14 +6,11 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { motion, useScroll } from 'framer-motion'
-// import { fadeIn } from '../components/Framer'
 
 const MyJobs = () => {
     const { user } = useAuth();
     const [jobs, setJobs] = useState([]);
     const axiosSecure = useAxiosSecure();
-    const { scrollYProgress } = useScroll()
 
     useEffect(() => {
         getData()
@@ -69,12 +66,8 @@ const MyJobs = () => {
     }
     return (
         <>
-            <motion.div
-                animate={{
-                    scale: [1, 2, 2, 1, 1],
-                    rotate: [0, 0, 270, 270, 0],
-                    borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-                }}
+            <div
+
                 className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
                 <h2
                     className="mb-4 text-xl font-bold">jobs: <span className="text-green-500">{jobs.length}</span> </h2>
@@ -141,7 +134,7 @@ const MyJobs = () => {
                         </tbody>
                     </table>
                 </div>
-            </motion.div>
+            </div>
         </>
     );
 };
