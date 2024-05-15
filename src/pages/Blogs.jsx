@@ -1,5 +1,6 @@
 import img from '../assets/image/demo picture/token picture.png'
 import express from '../assets/image/demo picture/express.png'
+import nest from '../assets/image/demo picture/nest js.png'
 const Blogs = () => {
     return (
         <>
@@ -40,7 +41,10 @@ const Blogs = () => {
                         </div>
                         <div>
                             <h3 className="font-semibold">Express js and Next js code:</h3>
+                            <span>Express js</span>
                             <img src={express} className="mt-1 dark:text-gray-600"></img>
+                            <br /> <span>Nest Js</span>
+                            <img src={nest} className="mt-1 dark:text-gray-600"></img>
                         </div>
                     </div>
                 </div>
