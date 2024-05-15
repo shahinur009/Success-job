@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ const Login = () => {
     const handleGoogleSignIn = async () => {
         try {
             const result = await signInWithGoogle()
-            console.log(result.user)
+            // console.log(result.user)
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,
                 {
                     email: result?.user?.email,
@@ -69,7 +70,13 @@ const Login = () => {
 
     return (
         <>
-            <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
+            <motion.div
+            animate={{
+                scale: [1, 2, 2, 1, 1],
+                rotate: [0, 0, 270, 270, 0],
+                borderRadius: ["20%", "20%", "50%", "0%", "0%"],
+            }}
+            className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <h1 className="text-2xl font-bold text-center">Login Please</h1>
                 <div className="flex justify-center mx-auto">
                     <img className="w-auto h-32 md:h-36" src={logo} alt="" />
@@ -139,7 +146,7 @@ const Login = () => {
                 </div>
 
                 <p className="mt-8 text-xs font-light text-center text-gray-400"> Do not have an account? <Link to='/registration' href="#" className="font-medium text-gray-700 dark:text-gray-200 hover:underline">Registration</Link></p>
-            </div>
+            </motion.div>
         </>
     );
 };

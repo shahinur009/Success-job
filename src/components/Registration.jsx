@@ -25,7 +25,7 @@ const Registration = () => {
         const name = form.name.value;
         const photo = form.photo.value;
         const password = form.password.value;
-        console.log(email, name, photo, password)
+        // console.log(email, name, photo, password)
         try {
             // user registration 
             const result = await createUser(email, password)

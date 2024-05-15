@@ -17,8 +17,6 @@ const JobDetails = () => {
 
     const handleApplication = async e => {
         e.preventDefault();
-        console.log('hi')
-        console.log(user?.email ,buyer?.email)
         if (user?.email === buyer?.email) { 
             return toast.error('You are not permitted try another way!!') 
         }

@@ -12,13 +12,11 @@ const AppliedJobs = () => {
 
     const { data: applied = [], isLoading, isError, error } = useQuery({
         queryFn: ({ queryKey }) => {
-            console.log(queryKey)
             return getData(queryKey[2])
         },
         queryKey: ['applied-jobs', user?.email],
     })
     const getData = async (filter) => {
-        console.log(filter)
         const { data } = await axiosSecure(`/applied-jobs/${user?.email}?filter=${filter}`)
         return data
     }
@@ -36,7 +34,7 @@ const AppliedJobs = () => {
 
     if (isLoading) return <p>please wait data loading....</p>
     if (isError || error) {
-        console.log(isError, error)
+        // console.log(isError, error)
     }
     return (
         <>

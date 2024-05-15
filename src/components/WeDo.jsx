@@ -1,12 +1,21 @@
 import { RiFindReplaceLine } from "react-icons/ri";
 import { FaSearchDollar } from "react-icons/fa";
 import { TbBrandSuperhuman } from "react-icons/tb";
+// motion
+import { motion } from 'framer-motion'
+// import { fadeIn } from '../components/Framer'
 
 
 const WeDo = () => {
     return (
         <>
-            <h1 className="text-xl md:text-4xl text-center py-5 font-bold">How <span className="text-red-700">Success Jobs</span> Works for You?</h1>
+            <motion.h1
+                animate={{
+                    scale: [1, 2, 2, 1, 1],
+                    rotate: [0, 0, 270, 270, 0],
+                    borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+                }}
+                className="text-xl md:text-4xl text-center py-5 font-bold">How <span className="text-red-700">Success Jobs</span> Works for You?</motion.h1>
             <div className="grid grid-cols-1 md:grid-cols-3">
 
                 <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">

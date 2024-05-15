@@ -14,6 +14,7 @@ import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/m
 import Slider from './Slider';
 
 const Banner = () => {
+    
     return (
         <div className='md:container px-2 py-2 md:px-8 md:py-8 md:mx-auto'>
             <Swiper

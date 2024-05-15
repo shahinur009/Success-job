@@ -4,7 +4,9 @@ Client site Github link => https://github.com/Porgramming-Hero-web-course/b9a11-
 
 Server site Github link => https://github.com/Porgramming-Hero-web-course/b9a11-server-side-shahinur009
 
-Live site link =>
+Firebase Live site link => https://success-jobs-7e686.web.app/
+
+vercel deploy link => https://success-jobs-server.vercel.app/
 
 Use NPM package
 1. npm install react-icons --save
