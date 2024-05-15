@@ -8,6 +8,16 @@ Firebase Live site link => https://success-jobs-7e686.web.app/
 
 vercel deploy link => https://success-jobs-server.vercel.app/
 
+Pages:
+1. Home
+2. All Jobs
+3. Blogs
+4. login and register
+5. Add jobs
+6. My Jobs
+7. Applied Jobs
+8. Error page
+
 Use NPM package
 1. npm install react-icons --save
 2. npm datePicker
