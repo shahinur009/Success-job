@@ -17,8 +17,8 @@ const JobDetails = () => {
 
     const handleApplication = async e => {
         e.preventDefault();
-        if (user?.email === buyer?.email) { 
-            return toast.error('You are not permitted try another way!!') 
+        if (user?.email === buyer?.email) {
+            return toast.error('You are not permitted try another way!!')
         }
         const form = e.target;
         const jobId = _id
@@ -28,7 +28,7 @@ const JobDetails = () => {
 
 
         const applyData = {
-            jobId, resume, category, name, buyer, email, buyer_name, image, job_description, applicants_number,
+            jobId, resume, category, name, buyer, email, buyer_name, image, job_description,
             buyer_email: buyer?.email,
         }
         console.table(applyData)

@@ -3,11 +3,12 @@ import logo from '../assets/image/logo.png'
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
-import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Registration = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosPublic = useAxiosPublic();
     const from = location.state || '/';
     let [showPassword, setShowPassword] = useState(false)
     const { createUser, signInWithGoogle, updateUserProfile, user, setUser, loading, } = useContext(AuthContext);
@@ -31,7 +32,7 @@ const Registration = () => {
             const result = await createUser(email, password)
             await updateUserProfile(name, photo)
             setUser({ ...result?.user, photoURL: photo, displayName: name })
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,
+            const { data } = await axiosPublic.post(`/jwt`,
                 {
                     email: result?.user?.email,
                 },
@@ -49,9 +50,10 @@ const Registration = () => {
     const handleGoogleSignIn = async () => {
         try {
             const result = await signInWithGoogle()
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,
+            const { data } = await axiosPublic.post(`/users`,
                 {
                     email: result?.user?.email,
+                    name: result?.user?.displayName,
                 },
                 { withCredentials: true }
             )

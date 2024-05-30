@@ -24,17 +24,18 @@ const AddJob = () => {
         const image = form.image.value;
         const salary_range = form.salary.value;
         const job_description = form.description.value;
-        const applicants_number = form.number.value;
+        
 
 
 
         const jobData = {
-            job_title, email, posting_date, deadline, category, salary_range, job_description, image, applicants_number, name,
+            job_title, email, posting_date, deadline, category, salary_range, job_description, image, name,
             buyer: {
                 email,
                 name: user?.displayName,
                 photo: user?.photoURL
             },
+            applicants_number: 0
         }
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/job`, jobData)
@@ -92,7 +93,7 @@ const AddJob = () => {
                                 <input type="text" name="image" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Picture URL" />
                             </div>
                             <div className="w-full">
-                                <label name="number" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Applicant Number </label>
+                                <label name="number" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Applicant Number: 0 </label>
                                 <input type="number" name="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type here applica" />
                             </div>
                             <div className="sm:col-span-2">

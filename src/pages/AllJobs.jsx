@@ -3,11 +3,13 @@ import axios from "axios";
 import SingleJobCard from "../components/SingleJobCard";
 
 const AllJobs = () => {
+    // eslint-disable-next-line no-unused-vars
     const [itemPerPage, setItemPerPage] = useState(3)
     const [currentPage, setCurrentPage] = useState(1)
     const [count, setCount] = useState(0)
     const [jobs, setJobs] = useState([]);
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState('');
+
 
 
     const getData = async () => {
@@ -17,6 +19,7 @@ const AllJobs = () => {
     }
     useEffect(() => {
         getData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, itemPerPage])
 
 
@@ -28,6 +31,16 @@ const AllJobs = () => {
         getCount()
     }, [])
     // console.log(jobs)
+    // const handleSearch = async () => {
+    //     try {
+    //         const res = await axios.get(`${import.meta.env.VITE_API_URL}/jobs`, {
+    //             params: search,
+    //         });
+    //         setJobs(res.data)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
     const numberOfPages = Math.ceil(count / itemPerPage)
     const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
@@ -45,12 +58,18 @@ const AllJobs = () => {
                     >Search </span>
 
 
-                    <input type="search" onChange={(e) => setSearch(e.target.value)} className="p-3 border-2 rounded-md w-1/2 md:w-1/3" placeholder="Search your jobs" />
+                    <input type="search" onChange={(e) => setSearch(e.target.value)} className="p-3 border-2 rounded-md w-1/2 md:w-1/3" placeholder="Search your jobs"
+                    />
+
                 </div>
+                {/* jobs cards */}
                 <div>
                     <div className="flex flex-wrap justify-center gap-5">
                         {
-                            jobs.map(job => (
+                            jobs.filter(item =>
+                                search === '' ? true : item.category.toLowerCase().includes(search.toLowerCase()) &&
+                                    search === '' ? true : item.job_title.toLowerCase().includes(search.toLowerCase())
+                            ).map(job => (
                                 <SingleJobCard key={job._id} job={job}></SingleJobCard>
                             ))
                         }

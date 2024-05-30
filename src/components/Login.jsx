@@ -5,10 +5,12 @@ import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { motion } from "framer-motion";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
+    const axiosPublic = useAxiosPublic();
     let [showPassword, setShowPassword] = useState(false)
     const { signIn, signInWithGoogle, user, loading } = useContext(AuthContext);
 
@@ -24,13 +26,20 @@ const Login = () => {
     const handleGoogleSignIn = async () => {
         try {
             const result = await signInWithGoogle()
-            // console.log(result.user)
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,
-                {
-                    email: result?.user?.email,
-                },
-                { withCredentials: true }
-            )
+            // // console.log(result.user)
+            // const { data } = await axiosPublic.post(`/jwt`,
+            //     {
+            //         email: result?.user?.email,
+            //         name: result?.user?.displayName,
+            //     },
+            //     { withCredentials: true }
+            // )
+            const { data } = await axiosPublic.post(`/users`, {
+
+                email: result?.user?.email,
+                name: result?.user?.displayName,
+
+            })
             console.log(data)
             toast.success('sign in successfully')
             navigate(from, { replace: true })
@@ -71,12 +80,12 @@ const Login = () => {
     return (
         <>
             <motion.div
-            animate={{
-                scale: [1, 2, 2, 1, 1],
-                rotate: [0, 0, 270, 270, 0],
-                borderRadius: ["20%", "20%", "50%", "0%", "0%"],
-            }}
-            className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
+                animate={{
+                    scale: [1, 2, 2, 1, 1],
+                    rotate: [0, 0, 270, 270, 0],
+                    borderRadius: ["20%", "20%", "50%", "0%", "0%"],
+                }}
+                className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <h1 className="text-2xl font-bold text-center">Login Please</h1>
                 <div className="flex justify-center mx-auto">
                     <img className="w-auto h-32 md:h-36" src={logo} alt="" />

@@ -54,6 +54,7 @@ const Navbar = () => {
                                         <li> <NavLink to='/applied-jobs'>Applied Jobs</NavLink> </li>
                                         <li> <NavLink to='/add-job'>Add Job</NavLink> </li>
                                         <li> <NavLink to='/my-jobs'>My Jobs</NavLink> </li>
+                                        <li> <NavLink to='/dashboard'>Dashboard</NavLink> </li>
                                         <li>
                                             <button onClick={logOut}
                                                 className='bg-gray-200 block text-center btn btn-success'

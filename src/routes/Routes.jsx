@@ -12,6 +12,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import AppliedJobs from "../pages/AppliedJobs";
 import Blogs from "../pages/Blogs";
 import AllJobs from "../pages/AllJobs";
+import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
 // import AllJobs from "../pages/AllJobs";
 
 
@@ -44,7 +45,6 @@ const router = createBrowserRouter([
             {
                 path: '/all-jobs',
                 element: <AllJobs />,
-                // loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
             },
             {
                 path: '/job/:id',
@@ -82,6 +82,11 @@ const router = createBrowserRouter([
 
         ]
     },
+    // admin route
+    {
+        path: 'dashboard',
+        element: <Dashboard />
+    }
 ]);
 
 export default router
