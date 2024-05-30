@@ -9,6 +9,10 @@ Firebase Live site link => https://success-jobs-7e686.web.app/
 
 vercel deploy link => https://success-jobs-server.vercel.app/
 
+30-05-24 update:
+All Jobs page:
+1. implement search as per category and job_title
+
 Pages:
 1. Home
 2. All Jobs
