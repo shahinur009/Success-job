@@ -1,12 +1,4 @@
-Assignment_ID => Assignment_category_0003
-
-Client site Github link => https://github.com/Porgramming-Hero-web-course/b9a11-client-side-shahinur009
-
-Server site Github link => https://github.com/Porgramming-Hero-web-course/b9a11-server-side-shahinur009
-
 Firebase Live site link => https://success-jobs-7e686.web.app/
-
-
 vercel deploy link => https://success-jobs-server.vercel.app/
 
 30-05-24 update:
